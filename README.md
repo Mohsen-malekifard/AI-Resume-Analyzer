@@ -10,4 +10,4 @@ npm install
 
 npm run Dev
 
-& Enjoy❤️
+& Enjoy❤️💙
