@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
-  apiKey: "VITE_OPENAI_API_KEY=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",
+  apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
