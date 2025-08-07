@@ -1,9 +1,8 @@
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
-  apiKey: "YOUR_API_KEY_HERE", // ← اینجا API Key خودت رو بذار
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
 });
-
 const openai = new OpenAIApi(configuration);
 
 export async function analyzeResumeAI(resumeText) {
