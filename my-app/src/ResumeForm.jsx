@@ -1,14 +1,17 @@
 import { useState } from "react";
 import ResultPanel from "./ResultPanel";
-import { analyzeResume } from "./utils/analyze";
+import { analyzeResumeAI } from "./utils/analyzeAI";
 
 export default function ResumeForm() {
   const [resume, setResume] = useState("");
   const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  function handleAnalyze() {
-    const analyzed = analyzeResume(resume);
-    setResult(analyzed);
+  async function handleAnalyze() {
+    setLoading(true);
+    const aiResult = await analyzeResumeAI(resume);
+    setResult(aiResult);
+    setLoading(false);
   }
 
   return (
@@ -21,21 +24,21 @@ export default function ResumeForm() {
           width: "100%",
           height: "200px",
           padding: "10px",
-          marginBottom: "10px"
+          marginBottom: "10px",
         }}
       />
       <button
         onClick={handleAnalyze}
         style={{
           padding: "10px 20px",
-          backgroundColor: "#4CAF50",
+          backgroundColor: "#007bff",
           color: "white",
           border: "none",
           borderRadius: "5px",
-          cursor: "pointer"
+          cursor: "pointer",
         }}
       >
-        Analyze Resume
+        {loading ? "Analyzing..." : "Analyze with AI"}
       </button>
 
       {result && <ResultPanel result={result} />}
